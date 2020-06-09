@@ -1,0 +1,12 @@
+RewriteEngine on
+RewriteBase /
+
+Action php-fcgid /fcgi-bin/php-fcgi-starter-5
+
+
+<IfModule mod_rewrite.c>
+	# Potential fix for broken flush().
+	RewriteEngine on
+	RewriteCond %{QUERY_STRING} ^refresh.*$
+	RewriteRule (.*) $1 [E=no-gzip:1]
+</IfModule>
